@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//David Uriel Soto Alvarez 
+//17551
+
 public class Character : MonoBehaviour {
-
-
+    public LayerMask layerMask; //Crea una variable para que aparezca en Unity de LayerMask
+    public GameObject feet; //Crea una variable para que aparezca en Unity de feet
     Rigidbody2D rb2d;
     SpriteRenderer sr;
     Animator anim;
@@ -34,7 +37,9 @@ public class Character : MonoBehaviour {
         sr.flipX = !facingRight;
 
         if (Input.GetButtonDown("Jump")) {
-            rb2d.AddForce(Vector2.up*jumpForce);
+            RaycastHit2D raycast = Physics2D.Raycast(feet.transform.position, Vector2.down, 0.1f, layerMask);
+            if (raycast.collider != null)
+                rb2d.AddForce(Vector2.up*jumpForce);
         }
 	}
 }
