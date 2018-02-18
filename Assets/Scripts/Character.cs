@@ -42,4 +42,23 @@ public class Character : MonoBehaviour {
                 rb2d.AddForce(Vector2.up*jumpForce);
         }
 	}
+    private void OnCollisionEnter2D(Collision2D collision) //Aqui persive si la nave tiene alguna colision con algun otro objeto 
+    {
+        if (collision.gameObject.name == "meta1") //Se verifica si la nave choca con un asteroide clonado
+        {
+            Application.LoadLevel("Dungeon2");
+        }
+        if (collision.gameObject.name == "Weight") //Se verifica si la nave choca con un asteroide clonado
+        {
+            Application.LoadLevel("Dungeon2");
+        }
+        if (collision.gameObject.name == "meta2") //Se verifica si la nave choca con un asteroide clonado
+        {
+            Application.LoadLevel("Dungeon3");
+        }
+        if (collision.gameObject.name == "meta3") //Se verifica si la nave choca con un asteroide clonado
+        {
+            Application.LoadLevel("Dungeon1");
+        }
+    }
 }
